@@ -1,5 +1,5 @@
 library(XML)
-setwd("C:/Users/bian0553/Desktop/newspaper")
+
 
 # define an output path for the Text files 
 var_textOutputFilePath_character = "/Users/bian0553/Desktop/newspaper/search_result"
