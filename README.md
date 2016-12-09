@@ -1,6 +1,7 @@
 # Newspaper
 
-##search_result.R:  This is a project related with web-scraping the newspaper information. First, define a function seach_process which can scraping the text contents of each seach result on http://chroniclingamerica.loc.gov/search/pages/results/?state=&date1=1789&date2=1922&x=0&y=0&dateFilterType=yearRange&rows=20&searchType=basic&proxtext=
+##search_result.R:  
+This is a project related with web-scraping the newspaper information. First, define a function seach_process which can scraping the text contents of each seach result on http://chroniclingamerica.loc.gov/search/pages/results/?state=&date1=1789&date2=1922&x=0&y=0&dateFilterType=yearRange&rows=20&searchType=basic&proxtext=
 The function has two arguments: object is the term you want to search for. var_searchStartRange_int is the page you want to start to scrape.
 The text files you scraped will be saved into local filesystem.
 
