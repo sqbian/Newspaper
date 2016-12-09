@@ -69,26 +69,22 @@ for (i in 1:length(news1)){
 
   url[i] = news1[[i]]["url"]   #get each url under each title
   title[i] = news1[[i]]["title"]   #get each title
-  dir = catch_same(title[i])
-  if(length(dir) == 0){
-    dir.create(paste(title[i],news1[[i]]["lccn"], sep = "_"))
-    setwd(paste("/usr/local/share/newspapers/raw",paste(title[i],news1[[i]]["lccn"], sep = "_"), sep = "/"))
-  }else{
-    setwd(paste("C:/Users/bian0553/Desktop/newspaper", title[i], sep = "/"))
-    }
+   dir.create(title[i])  #Name the folder using the title
+  setwd(paste("/usr/local/share/newspapers/raw",title[i], sep = "/"))
   writeLines(toJSON(getpage(news1[[i]]["url"])), "metadata.JSON")  #write the metadata page to a file "metadata.JSON"
   issueNum = length(getpage(news1[[i]]["url"])$issues) #To know how many issues in each title
   print(issueNum)  #show how many issues in this title 
-  for(j in 1:issueNum)
-  {
+  for(j in 1:issueNum){
+    
     eachIssue[j] = getpage(url[i])$issues[[j]]["url"] #get into each url under each issue
-    if(length(catch(getURL(eachIssue[j])))>0)
-    {
+    if(length(catch(getURL(eachIssue[j])))>0){
+      
       seqNum = length(getpage(eachIssue[j])$pages) #To know how many sequences in each issue
-      for(k in 1:seqNum )
-      {
+      for(k in 1:seqNum ){
+      
         eachSeq[k] = getpage(eachIssue[j])$pages[[k]]$url  #get into each url under each sequence (get the txt website)
         if(length(catch(getURL(eachSeq[k]))) > 0 & length(catch_txt(fromJSON(getURL(eachSeq[k]))$text) > 0)){
+          
           txt = readLines(getpage(eachSeq[k])$text, warn = FALSE)  #get text from the website
           call[k] = paste(getpage(eachSeq[k])$issue["date_issued"], getpage(eachSeq[k])$sequence, sep = "_") #name the text
           write.table(news1[[i]]["state"], file = call[k],row.names = FALSE, col.names = FALSE,quote = FALSE) #add state to the text content
@@ -107,7 +103,8 @@ for (i in 1:length(news1)){
   
     print(j)     #show how many sequences in each issue  
   }
-  setwd(original)
+  setwd("/usr/local/share/newspapers/raw")
+
 }
 
 
