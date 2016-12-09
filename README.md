@@ -9,3 +9,7 @@ Then the process will be the data mining. First, go into each files in the files
 
 ##cleancode.R
 This script is used for data-cleaning the downloaded newspapers and then saving the cleaned texts into a new target folder.
+
+##newspaperscrape_old.R
+This is an old way to srape the newspaper before using search_result.R. This process is scrapping all the newspaper texts from JSON and save them to the local filesystem for the aim of researching. First, I gained the information about how many newspaper titles. Then I wrote the functions to enter into each newspaper title link to get the number of issues and the number of sequences under each issue. Each sequence is one piece of newspaper. Therefore, we can get all the newspaper texts by looping all of the sequences, scrapping the texts and saving them to the local filesystem.
+This old way is very inefficient so I gave up this and implemented search_result.R, which is more efficient and useful. 
